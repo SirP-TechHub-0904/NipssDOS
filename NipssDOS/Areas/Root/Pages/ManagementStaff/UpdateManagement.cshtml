@@ -1,0 +1,44 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.ManagementStaff.UpdateManagementModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h2>Add Management Staff to @TempData["title"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="ManagingStaff.AlumniId" value="@TempData["id"]" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ManagingStaff.Position" class="control-label"></label>
+                <input asp-for="ManagingStaff.Position" class="form-control" />
+                <span asp-validation-for="ManagingStaff.Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManagingStaff.SortOrder" class="control-label"></label>
+                <input asp-for="ManagingStaff.SortOrder" class="form-control" />
+                <span asp-validation-for="ManagingStaff.SortOrder" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ManagingStaff.ProfileId" class="control-label"></label>
+                <select asp-for="ManagingStaff.ProfileId" class="form-control js-example-basic-single" asp-items="ViewBag.ProfileId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="update" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

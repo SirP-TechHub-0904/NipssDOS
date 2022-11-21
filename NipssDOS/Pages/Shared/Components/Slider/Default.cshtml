@@ -1,0 +1,21 @@
+﻿
+@*@model ICollection<NipssDOS.Data.Model.Slider>*@
+
+
+
+@if (ViewBag.slide != null){
+<div id="wrapper">
+
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+            @foreach (var x in ViewBag.slide)
+            {
+            <img src="@x.ImagePath" data-thumb="@x.ImagePath" alt="" title="@x.Title" />
+            }
+        </div>
+
+    </div>
+</div>
+}else{
+    <h4 style="text-align:center;">SLIDER NOT SET</h4>
+}

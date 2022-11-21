@@ -1,0 +1,98 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.HomeImageModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 2px;
+    }
+</style>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+    <h4 style="padding:10px;font-weight:900;" class="text-uppercase">
+        HOME PAGE IMAGES FOR @Model.Alumni.Title
+
+        <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
+
+    </h4>
+    <hr />
+    <div class="clearfix"></div>
+    <div class="table-responsive">
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        FIRST IMAGE
+                    </th>
+                    <td>
+                        <img src="@Model.Alumni.WebsiteFirstImage" class="img-fluid" style="max-height:200px;" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        SECOND IMAGE
+                    </th>
+                    <td>
+                        <img src="@Model.Alumni.WebsiteSecondImage" class="img-fluid" style="max-height:200px;" />
+
+
+                    </td>
+                </tr>
+               
+
+            </thead>
+        </table>
+          </div>
+
+</div>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+    <div class="col-md-4">
+        <h4>Update Legacy Project</h4>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Alumni.Id" />
+           
+            <div class="form-group">
+                <label asp-for="Alumni.WebsiteFirstImage" class="control-label">First Image</label>
+                <input class="form-control" type="file" name="WebsiteFirstImage" id="gallery-photo-add" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Alumni.WebsiteSecondImage" class="control-label">Second Image</label>
+                <input class="form-control" type="file" name="WebsiteSecondImage" id="gallery-photo-add" />
+            </div>
+          
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,75 @@
+﻿@page
+@model NipssDOS.Areas.Admin.Pages.MessagingPage.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Message</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Message.Id" />
+            <div class="form-group">
+                <label asp-for="Message.Recipient" class="control-label"></label>
+                <input asp-for="Message.Recipient" class="form-control" />
+                <span asp-validation-for="Message.Recipient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Mail" class="control-label"></label>
+                <input asp-for="Message.Mail" class="form-control" />
+                <span asp-validation-for="Message.Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Title" class="control-label"></label>
+                <input asp-for="Message.Title" class="form-control" />
+                <span asp-validation-for="Message.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.SentVia" class="control-label"></label>
+                <input asp-for="Message.SentVia" class="form-control" />
+                <span asp-validation-for="Message.SentVia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Result" class="control-label"></label>
+                <input asp-for="Message.Result" class="form-control" />
+                <span asp-validation-for="Message.Result" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Date" class="control-label"></label>
+                <input asp-for="Message.Date" class="form-control" />
+                <span asp-validation-for="Message.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Retries" class="control-label"></label>
+                <input asp-for="Message.Retries" class="form-control" />
+                <span asp-validation-for="Message.Retries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.NotificationStatus" class="control-label"></label>
+                @Html.DropDownListFor(model => model.Message.NotificationStatus, new SelectList(Enum.GetValues(typeof(NipssDOS.Data.Model.NotificationStatus))), new { @class = "form-control" })
+                <span asp-validation-for="Message.NotificationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.NotificationType" class="control-label"></label>
+                @Html.DropDownListFor(model => model.Message.NotificationType, new SelectList(Enum.GetValues(typeof(NipssDOS.Data.Model.NotificationType))), new { @class = "form-control" })
+                <span asp-validation-for="Message.NotificationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,160 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.LegacyProjectPageModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 2px;
+    }
+</style>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+    <h4 style="padding:10px;font-weight:900;" class="text-uppercase">
+        LEGACY PROJECT FOR @Model.SecProject.Alumni.Title
+
+        <a asp-page="./AlumniInfo" asp-route-id="@Model.SecProject.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
+
+    </h4>
+    <hr />
+    <div class="clearfix"></div>
+    <div class="table-responsive">
+        <h4 style="padding:5px;">THEME</h4>
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        Project
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.SecProject.Title) 
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Sub Title
+                    </th>
+                    <td>
+                        <sub>@Html.DisplayFor(model => model.SecProject.SubTitle)</sub>
+                     
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Description
+                    </th>
+                    <td>
+                       
+                        @Html.DisplayFor(model => model.SecProject.Description)
+                    </td>
+                </tr>
+
+            </thead>
+        </table>
+        <h4 style="padding:5px;">PROJECT PICTURES</h4>
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+
+                <tr>
+                    <th>
+                        Front View
+                    </th>
+                    <td>
+                        <img src="@Model.SecProject.FrontViewImage" class="img-fluid" style="max-height:200px;" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        Side View
+                    </th>
+                    <td>
+                        <img src="@Model.SecProject.SideViewImage" class="img-fluid" style="max-height:200px;" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        Top View
+                    </th>
+                    <td>
+                        <img src="@Model.SecProject.TopViewImage" class="img-fluid" style="max-height:200px;" />
+                    </td>
+
+                </tr>
+
+
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+    <div class="col-md-4">
+        <h4>Update Legacy Project</h4>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SecProject.Id" />
+            <input type="hidden" asp-for="SecProject.AlumniId" />
+            <div class="form-group">
+                <label asp-for="SecProject.Title" class="control-label">Title</label>
+                <textarea asp-for="SecProject.Title" class="form-control"></textarea>
+                <span asp-validation-for="SecProject.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecProject.SubTitle" class="control-label">Sub Title</label>
+                <textarea asp-for="SecProject.SubTitle" class="form-control"></textarea>
+                <span asp-validation-for="SecProject.SubTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecProject.Description" class="control-label"></label>
+                <textarea asp-for="SecProject.Description" class="form-control"></textarea>
+                <span asp-validation-for="SecProject.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecProject.FrontViewImage" class="control-label">Front View</label>
+                <input class="form-control" type="file" name="FrontView" id="gallery-photo-add" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SecProject.SideViewImage" class="control-label">Side View</label>
+                <input class="form-control" type="file" name="SideView" id="gallery-photo-add" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SecProject.TopViewImage" class="control-label">Top View</label>
+                <input class="form-control" type="file" name="TopView" id="gallery-photo-add" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

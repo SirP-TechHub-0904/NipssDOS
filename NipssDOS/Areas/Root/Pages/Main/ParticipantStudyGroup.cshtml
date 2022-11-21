@@ -1,0 +1,70 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.ParticipantStudyGroupModel
+@{
+}
+<div class="card-body">
+    <h3>
+        Participants for @Model.StudyGroup.Title - @Model.Alumni.Title (@Model.SecParticipant.Where(x => x.IsTrue == true).Count() Participants)
+
+        <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
+
+    </h3>
+    
+
+    <div class="table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>
+                        Fullname
+                    </th>
+                    <th>Image</th>
+                    <th>
+                        Sponsor
+                    </th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                
+                @{ int sn = 0;}
+
+                @foreach (var item in Model.SecParticipant.Where(x => x.IsTrue == true))
+                {
+                    <tr>
+                        <td>
+                            @{ sn++; }
+                            @sn
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.Title)
+                            @Html.DisplayFor(modelItem => item.Profile.FullName)
+                        </td>
+                        <td>
+                            <img src="https://NipssDOS.com/@item.Profile.AboutProfile" height="70" />
+                        </td>
+                     
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.Sponsor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.Position)
+                        </td>
+                      
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

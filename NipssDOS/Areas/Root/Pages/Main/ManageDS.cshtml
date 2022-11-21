@@ -1,0 +1,93 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.ManageDSModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+    <h3>
+        DIRECTING STAFF FOR @Model.Alumni.Title (@Model.Alumni.DirectingStaffs.Count() DS)
+        <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
+
+    </h3>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    {
+        <h6>
+            <a asp-page="/DSPage/UpdateDS" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Update DS for SEC</a>
+        </h6>
+    }
+    <div class="table-responsive">
+
+
+        <table id="example1" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        Sort order
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Study Group
+                    </th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Alumni.DirectingStaffs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SortOrder)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.Title)
+                            @Html.DisplayFor(modelItem => item.Profile.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudyGroup.Title)
+                        </td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                        {
+                    <td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin"))
+                        {
+                            <a asp-page="/DSPage/Delete" asp-route-id="@item.Id">Delete</a>
+                        }
+                            <a asp-page="/DSPage/Edit" asp-route-id="@item.Id">Edit</a>
+                        </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,32 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.ParticipantManager.IstrueModel
+
+@{
+    ViewData["Title"] = "Istrue";
+}
+
+<h2>Istrue</h2>
+
+<h4>SecParticipant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+     
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="SecParticipant.IsTrue" /> @Html.DisplayNameFor(model => model.SecParticipant.IsTrue)
+                    </label>
+                </div>
+            </div>
+            
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

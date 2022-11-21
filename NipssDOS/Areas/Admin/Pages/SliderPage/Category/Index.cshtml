@@ -1,0 +1,151 @@
+﻿@page
+@model NipssDOS.Areas.Admin.Pages.SliderPage.Category.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title text-upper">
+            SLIDER MANAGEMENT
+        </h3>
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <p>
+            <a asp-page="Create" class="btn btn-primary">Create New</a>
+            <a asp-page="/SliderPage/Index" class="pull-right btn btn-danger">View All Slides</a>
+        </p>
+    </div>
+</div>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title text-upper">
+            ACTIVE SLIDER
+        </h3>
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Active)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Date)
+                    </th>
+                    <th>SEC</th>
+                    <th>Slider</th>
+                </tr>
+            </thead>
+            @{
+                int sn = 0;
+            }
+            <tbody>
+                @foreach (var item in Model.SliderCategory.Where(d => d.Alumni.Active == true)) {
+                    <tr>
+                        <td>
+                            @{
+                                sn++;
+                            }
+                            @sn
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alumni.Title)
+                        </td>
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.Id">
+                                @item.Sliders.Count() Sliders
+                            </a>
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+                        <div class="box">
+    <div class="box-header">
+        <h3 class="box-title text-upper">
+            OTHER SLIDER
+        </h3>
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Active)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SliderCategory[0].Date)
+                    </th>
+                    <th>SEC</th>
+                    <th>Slider</th>
+                </tr>
+            </thead>
+            @{
+                int xsn = 0;
+            }
+            <tbody>
+                @foreach (var item in Model.SliderCategory.Where(d => d.Alumni.Active == false)) {
+                    <tr>
+                        <td>
+                            @{
+                                xsn++;
+                            }
+                            @xsn
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alumni.Title)
+                        </td>
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.Id">
+                                @item.Sliders.Count() Sliders
+                            </a>
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

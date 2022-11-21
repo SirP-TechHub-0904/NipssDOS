@@ -1,0 +1,138 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.EditThemeModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 2px;
+    }
+</style>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+    <h4 style="padding:10px;font-weight:900;" class="text-uppercase">
+        SENIOR EXECUTIVE COURSE @Model.Alumni.Title THEME
+
+        <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
+
+    </h4>
+    <hr />
+    <div class="clearfix"></div>
+    <div class="table-responsive">
+        <h4 style="padding:5px;">THEME</h4>
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        Theme
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.GeneralTopic) <sub>@Html.DisplayFor(model => model.Alumni.GeneralTopicContinuation)</sub>
+                    </td>
+                </tr>
+
+
+            </thead>
+        </table>
+        <h4 style="padding:5px;">SUB THEME</h4>
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+                @foreach (var themes in Model.Alumni.SubGeneralTopics.OrderBy(x=>x.SortOrder))
+                {
+                    <tr>
+                        <th>
+                            @themes.SortOrder
+                        </th>
+                        <td>
+                            @themes.SunTheme
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="Delete">
+                                
+                                <input type="hidden" asp-for="SubthemeId" value="@themes.Id" />
+                                <input type="hidden" asp-for="AID" value="@themes.AlumniId" />
+                                <input type="submit" value="X" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+    <div class="col-md-4">
+        <h4>Theme Update</h4>
+        <form method="post" asp-page-handler="UpdateTheme">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Alumni.Id" />
+            <div class="form-group">
+                <label asp-for="Alumni.GeneralTopic" class="control-label">General Theme</label>
+                <textarea asp-for="Alumni.GeneralTopic" class="form-control" ></textarea>
+                <span asp-validation-for="Alumni.GeneralTopic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alumni.GeneralTopicContinuation" class="control-label"></label>
+                <textarea asp-for="Alumni.GeneralTopicContinuation" class="form-control" ></textarea>
+                <span asp-validation-for="Alumni.GeneralTopicContinuation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update Theme" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+      
+        <h4>Add Sub Theme</h4>
+        <form method="post" asp-page-handler="SubTheme">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SubGeneralTopic.AlumniId" value="@Model.Alumni.Id" />
+            <div class="form-group">
+                <label asp-for="SubGeneralTopic.SunTheme" class="control-label">Sub Theme</label>
+                <textarea asp-for="SubGeneralTopic.SunTheme" class="form-control"></textarea>
+                <span asp-validation-for="SubGeneralTopic.SunTheme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubGeneralTopic.SortOrder" class="control-label"></label>
+                <input asp-for="SubGeneralTopic.SortOrder" class="form-control" />
+                <span asp-validation-for="SubGeneralTopic.SortOrder" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

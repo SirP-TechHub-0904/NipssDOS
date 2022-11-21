@@ -1,0 +1,66 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.AlumniModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card-body">
+
+
+    <h2>Alumni</h2>
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <div class="table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].SortOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].Title)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].Year)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].GeneralTopic)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Alumni)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SortOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GeneralTopic)
+                        </td>
+
+                     
+
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>

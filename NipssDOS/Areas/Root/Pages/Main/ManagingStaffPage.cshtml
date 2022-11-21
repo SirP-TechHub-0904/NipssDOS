@@ -1,0 +1,84 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.ManagingStaffPageModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+    <h3>MANAGEMENT STAFF FOR @Model.Alumni.Title (@Model.Alumni.ManagingStaffs.Count())</h3>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    {
+        <h6>
+            <a asp-page="/ManagementStaff/UpdateManagement" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Update Management for SEC</a>
+        </h6>
+    }
+    <div class="table-responsive">
+
+
+        <table id="example1" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        Sort order
+                    </th>
+                    <th>
+                        Position
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Alumni.ManagingStaffs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SortOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Position)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Profile.Title)
+                            @Html.DisplayFor(modelItem => item.Profile.FullName)
+                        </td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin"))
+                        {
+                            <td>
+                                <a asp-page="/ManagementStaff/Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

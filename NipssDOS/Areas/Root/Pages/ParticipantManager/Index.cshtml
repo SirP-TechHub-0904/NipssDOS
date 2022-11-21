@@ -1,0 +1,95 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.ParticipantManager.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="card-body">
+    <h3>Participants (@Model.SecParticipant.Count())</h3>
+    <h6>
+        <a asp-page="/ParticipantPage/UpdateParticipant" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Update participant for SEC</a>
+        <a asp-page="/ParticipantManager/Create" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Add New Participant to SEC</a>
+    </h6>
+
+    <div class="table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>
+                        Fullname
+                    </th>
+                    <th>Image</th>
+                    <th>Status</th>
+                    <th>
+                        Sponsor
+                    </th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+                    <th>Study Group</th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                @{ int sn = 0;}
+
+                @foreach (var item in Model.SecParticipant)
+                {
+            <tr>
+                <td>
+                    @{ sn++; }
+                    @sn
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profile.Title)
+                    @Html.DisplayFor(modelItem => item.Profile.FullName)
+                </td>
+                <td>
+                    <img src="https://NipssDOS.com/@item.Profile.AboutProfile" height="70" />
+                </td>
+                <td>
+                    @if (item.IsTrue == true)
+                    {
+
+
+                        <span>true001</span>
+                        <a asp-page="./Istrue" asp-route-id="@item.Id" class="btn btn-success"><i class="fa fa-check"></i></a>
+                    }
+                    else
+                    { <span>false020</span>
+                        <a asp-page="./Istrue" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profile.Sponsor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profile.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profile.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profile.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudyGroup.Title)
+                </td>
+                <td>
+                    <a asp-page="/ParticipantPage/Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="/ParticipantPage/Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

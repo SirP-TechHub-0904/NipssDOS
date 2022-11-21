@@ -1,0 +1,88 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.AlumniInfoModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+    <h4 style="padding:10px;font-weight:900;">
+        SENIOR EXECUTIVE COURSE
+        <a asp-page="/Main/Alumni" class="btn btn-danger pull-right">Other SECs</a>
+    </h4>
+    <hr />
+    <div class="clearfix"></div>
+    <div class="table-responsive">
+
+        <table id="" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni.Title)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.Title)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Date Range
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.DateRange)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni.Year)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.Year)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        General Topic
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.GeneralTopic)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni.Active)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.Active)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Number
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Alumni.SortOrder)
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+</div>
+<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;padding:10px;">
+
+    <a asp-page="./Edit" asp-route-id="@Model.Alumni.Id" class="btn btn-success" style="margin-right:6px;">Update SEC</a>
+    <a asp-page="./EditTheme" asp-route-id="@Model.Alumni.Id" class="btn btn-warning" style="margin-right:6px;">Update Theme</a>
+    <a asp-page="./LegacyProjectPage" asp-route-id="@Model.Alumni.Id" class="btn btn-primary" style="margin:6px;">Legacy Project</a>
+    <a asp-page="./ExecutiveManage" asp-route-id="@Model.Alumni.Id" class="btn btn-danger" style="margin:6px;">Executives</a>
+    <a asp-page="./StudyGroupManage" asp-route-id="@Model.Alumni.Id" class="btn btn-warning" style="margin:6px;">Study Group</a>
+    <a asp-page="/ParticipantManager/ListParticipant" asp-route-id="@Model.Alumni.Id" class="btn btn-info" style="margin:6px;">Participants</a>
+    <a asp-page="./ManagingStaffPage" asp-route-id="@Model.Alumni.Id" class="btn btn-success" style="margin:6px;">Management Staff</a>
+    <a asp-page="./ManageDS" asp-route-id="@Model.Alumni.Id" class="btn btn-danger" style="margin:6px;">Directing Staff</a>
+    <a asp-page="./HomeImage" asp-route-id="@Model.Alumni.Id" class="btn btn-info" style="margin:6px;">Home Page Pictures</a>
+
+
+</div>
+
+
+

@@ -1,0 +1,147 @@
+﻿@page
+@model NipssDOS.Areas.NIPSS.Pages.Admin.AllUsersModel
+
+@{
+    ViewData["Title"] = "AllUsers";
+}
+
+
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">
+            All Users (@Model.Profile.Count())
+        </h3>
+        <div class="table-responsive">
+            <table id="" class="table table-bordered table-striped" style="font-weight: 800; max-width: 400px; background-color: rgba(60, 141, 188, 0.48);">
+                <thead>
+                    <tr>
+                        <th colspan="2">STATISTICS</th>
+                    </tr>
+                    <tr>
+                        <th>All</th>
+                        <th>@Model.Profile.Count()</th>
+                    </tr>
+                    <tr>
+                        <th>Management Staff</th>
+                        <th>@Model.MS</th>
+                    </tr>
+                    <tr>
+                        <th>Directing Staff</th>
+                        <th>@Model.DS</th>
+                    </tr>
+                    <tr>
+                        <th>Staff</th>
+                        <th>@Model.Staff</th>
+                    </tr>
+                    <tr>
+                        <th>Participant</th>
+                        <th>@Model.Participant</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+
+                            @Html.DisplayNameFor(model => model.Profile[0].FullName)
+                        </th>
+                        <th>Phone Number</th>
+                        <th>Image</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].DOB)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].Position)
+                        </th>
+                        <th>
+                            PS Number
+                        </th>
+                        <th>
+                            Date Registered
+                        </th>
+                        <th>
+                            Study Group
+                        </th>
+                        <th>
+                            State Of Origin
+                        </th>
+
+                    </tr>
+                </thead>
+                @{ int sn = 0;}
+                <tbody>
+                    @foreach (var item in Model.Profile)
+                    {
+                        <tr>
+
+                            <td>
+                                @{ sn++; }
+                                @sn
+                            </td>
+
+                            <td>
+                                <a asp-page="./UserInfo" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Title)
+
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                <a href="@item.AboutProfile" target="_blank"> <img src="@item.AboutProfile" height="40" /></a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DOB)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Roles)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OfficialRoleStatus)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PsNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateRegistered)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudyGroupMemeber.StudyGroup.Title)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StateOfOrigin)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

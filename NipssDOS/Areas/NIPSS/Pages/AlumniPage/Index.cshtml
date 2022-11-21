@@ -1,0 +1,69 @@
+﻿@page
+@model NipssDOS.Areas.NIPSS.Pages.AlumniPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">
+            ALUMNI
+        </h3>
+        
+
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni[0].Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni[0].DateRange)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni[0].Year)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni[0].GeneralTopic)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni[0].Active)
+                        </th>
+
+                    </tr>
+                </thead>
+                @{ int sn = 0;}
+                <tbody>
+                    @foreach (var item in Model.Alumni)
+                    {
+                        <tr>
+                            <td>
+                                @{ sn++;
+                                    @sn}
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateRange)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Year)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GeneralTopic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Active)
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>        </div>            </div>
