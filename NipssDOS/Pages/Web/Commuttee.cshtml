@@ -18,10 +18,15 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container">
         <div class="row">
-            
+
             @foreach (var item in Model.CommitteeCategory)
             {
                 <div class="col-md-6" style="margin:10px 0">

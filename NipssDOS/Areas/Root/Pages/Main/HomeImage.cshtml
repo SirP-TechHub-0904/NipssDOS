@@ -45,54 +45,55 @@
 
                     </td>
                 </tr>
-               
+
 
             </thead>
         </table>
-          </div>
-
-</div>
-
-<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
-
-    <div class="col-md-4">
-        <h4>Update Legacy Project</h4>
-        <form method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Alumni.Id" />
-           
-            <div class="form-group">
-                <label asp-for="Alumni.WebsiteFirstImage" class="control-label">First Image</label>
-                <input class="form-control" type="file" name="WebsiteFirstImage" id="gallery-photo-add" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Alumni.WebsiteSecondImage" class="control-label">Second Image</label>
-                <input class="form-control" type="file" name="WebsiteSecondImage" id="gallery-photo-add" />
-            </div>
-          
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-warning" />
-            </div>
-        </form>
     </div>
 
 </div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
+{
+    <div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+
+        <div class="col-md-4">
+            <h4>Update Legacy Project</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Alumni.Id" />
+
+                <div class="form-group">
+                    <label asp-for="Alumni.WebsiteFirstImage" class="control-label">First Image</label>
+                    <input class="form-control" type="file" name="WebsiteFirstImage" id="gallery-photo-add" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Alumni.WebsiteSecondImage" class="control-label">Second Image</label>
+                    <input class="form-control" type="file" name="WebsiteSecondImage" id="gallery-photo-add" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-warning" />
+                </div>
+            </form>
+        </div>
+
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

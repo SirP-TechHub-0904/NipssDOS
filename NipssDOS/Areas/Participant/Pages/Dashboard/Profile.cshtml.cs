@@ -36,18 +36,6 @@ namespace NipssDOS.Areas.Participant.Pages.Dashboard
         [BindProperty]
         public Profile Profile { get; set; }
 
-        [BindProperty]
-        public string GroupPosition { get; set; }
-
-        [BindProperty]
-        public long GroupId { get; set; }
-
-        [BindProperty]
-        public long GroupMemberId { get; set; }
-        [BindProperty]
-        public string GroupName { get; set; }
-        public StudyGroupMemeber StudyGroup { get; set; }
-
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -57,14 +45,7 @@ namespace NipssDOS.Areas.Participant.Pages.Dashboard
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
             Profile = await _context.Profiles.Include(x=>x.MyGallery).FirstOrDefaultAsync(x => x.UserId == user.Id);
-            StudyGroup = await _context.StudyGroupMemebers.Include(x=>x.StudyGroup).FirstOrDefaultAsync(x => x.ProfileId == Profile.Id);
-            if (StudyGroup != null)
-            {
-                GroupPosition = StudyGroup.Position;
-                GroupName = StudyGroup.StudyGroup.Title;
-                GroupMemberId = StudyGroup.Id;
-            }
-            ViewData["StudyGroupId"] = new SelectList(_context.StudyGroups, "Id", "Title");
+          
             ViewData["StateId"] = new SelectList(_context.States, "StateName", "StateName");
 
 
@@ -113,15 +94,6 @@ namespace NipssDOS.Areas.Participant.Pages.Dashboard
                 pro.ProfileUpdateFirstTime = true;
                 _context.Attach(pro).State = EntityState.Modified;
 
-                //try
-                //{
-                //    var group = await _context.StudyGroupMemebers.FirstOrDefaultAsync(x => x.Id == GroupMemberId);
-                //    group.Position = GroupPosition;
-                //    _context.Attach(group).State = EntityState.Modified;
-                //}catch(Exception f)
-                //{
-                //    TempData["alert"] = "Your not yet assigned to a Group.";
-                //}
                 await _context.SaveChangesAsync();
                 TempData["alert"] = "Profile Updated Successfull";
                 return RedirectToPage("./Profile");

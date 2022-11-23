@@ -11,7 +11,7 @@
 
 
             <h2 class="nm-tc nm-mb-1">Sign In</h2>
-            <form method="post">
+            <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
                 <div asp-validation-summary="All" class="text-danger" style="font-weight:800;;text-align:center;"></div>
                 @TempData["alert"]
                 <div class="form-group">

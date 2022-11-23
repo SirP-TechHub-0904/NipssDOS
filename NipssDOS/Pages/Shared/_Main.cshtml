@@ -388,6 +388,8 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin"))
                     {
                         <li class="header">ADMIN MENU</li>
+                        <li><a asp-page="/Main/AlumniIndex" asp-area="Root"><i class="fa fa-home"></i> <span>SECs</span></a></li>
+
                         <li><a asp-page="/ParlyCategory/Index" asp-area="Root"><i class="fa fa-file"></i> <span>Admin Folder</span></a></li>
                         <li><a asp-page="/ParlyDocument/Index" asp-area="Root"><i class="fa fa-file"></i> <span>Admin Documents</span></a></li>
 

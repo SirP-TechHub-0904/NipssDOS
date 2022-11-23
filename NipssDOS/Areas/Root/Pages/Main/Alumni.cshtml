@@ -4,63 +4,37 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<style>
+    .oneline {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
 <div class="card-body">
 
 
-    <h2>Alumni</h2>
+    <h2>SENIOR EXECUTIVE COURSE</h2>
 
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <div class="table-responsive">
-        <table id="example1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Alumni[0].SortOrder)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Alumni[0].Title)
-                    </th>
+    <div class="row">
+        @foreach (var item in Model.Alumni)
+        {
+            <div class="col-md-4">
+                <!-- small box -->
+                <div class="small-box @item.Color">
+                    <div class="inner">
+                        <a asp-page="">
+                            <h3>@item.Title</h3>
+                        </a>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.Alumni[0].Year)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Alumni[0].GeneralTopic)
-                    </th>
+                        <p class="oneline">@item.GeneralTopic</p>
+                    </div>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Alumni)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SortOrder)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Year)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GeneralTopic)
-                        </td>
-
-                     
-
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                    <a asp-page="./AlumniInfo" asp-route-id="@item.Id" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        }
     </div>
+
     </div>

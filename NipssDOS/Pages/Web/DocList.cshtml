@@ -14,6 +14,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container-fluid">
         <div class="row">
@@ -27,18 +33,20 @@
                                         <tr>
                                             <th><h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;text-transform:uppercase;">S/N</h4></th>
                                             <th><h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;text-transform:uppercase;">Document</h4></th>
-                                            <th><h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;text-transform:uppercase;">
-                                                @if(Model.DocumentCategory.Title.ToUpper().Contains("MOST CHALLENGING CAREER"))
-            {
-                                                    <span>Owner</span>
-            }
-            else
-            {
-                                                <span>Resource Person</span>
-            }
-                                                
-                                                
-                                                </h4></th>
+                                            <th>
+                                                <h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;text-transform:uppercase;">
+                                                    @if (Model.DocumentCategory.Title.ToUpper().Contains("MOST CHALLENGING CAREER"))
+                                                    {
+                                                        <span>Owner</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Resource Person</span>
+                                                    }
+
+
+                                                </h4>
+                                            </th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -46,25 +54,27 @@
                                         int sno = 0;
                                     }
                                     <tbody>
-                                       
+
 
                                         @foreach (var item in Model.Document)
                                         {
-                                        <tr>
-                                            <td>
-                                                @{ sno++; }
-                                                @sno
-                                            </td>
-                                            <td><a asp-page="/Web/DocPreview" asp-route-id="@item.Id"><h6 style="text-align: left; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;line-height:24px;margin:0 5px;">@Html.DisplayFor(modelItem => item.Title)</h6></a>
-                                           @if(item.Event != null){
-                                            <p style="margin:0 0 0 4px;padding:0;">@item.Event.EventDate @item.Event.EventTime</p>
-                                            }
-                                            </td>
-                                            <td><a><p style="font-weight:800;">@item.Profile.Title @item.Profile.FullName</p></a></td>
-                                            <td><a asp-page="/Web/DocPreview" asp-route-id="@item.Id" class="btn btn-danger btn-xs" style="color:white;">Preview</a></td>
+                                            <tr>
+                                                <td>
+                                                    @{ sno++; }
+                                                    @sno
+                                                </td>
+                                                <td>
+                                                    <a asp-page="/Web/DocPreview" asp-route-id="@item.Id"><h6 style="text-align: left; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;line-height:24px;margin:0 5px;">@Html.DisplayFor(modelItem => item.Title)</h6></a>
+                                                    @if (item.Event != null)
+                                                    {
+                                                        <p style="margin:0 0 0 4px;padding:0;">@item.Event.EventDate @item.Event.EventTime</p>
+                                                    }
+                                                </td>
+                                                <td><a><p style="font-weight:800;">@item.Profile.Title @item.Profile.FullName</p></a></td>
+                                                <td><a asp-page="/Web/DocPreview" asp-route-id="@item.Id" class="btn btn-danger btn-xs" style="color:white;">Preview</a></td>
 
 
-                                        </tr>
+                                            </tr>
 
                                         }
                                     </tbody>
@@ -72,15 +82,15 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            
+
                             <table class="table table-bordered">
                                 <tr>
                                     <th>
                                         <h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;">NAVIGATION</h4>
-                                        </th>
-                                    </tr>
-                                        @foreach (var item in Model.DocumentCategoryList)
-                                        {
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model.DocumentCategoryList)
+                                {
                                     <tr>
                                         <th>
                                             <a asp-page="/Web/DocList" asp-route-id="@item.Id"><h6 style="text-align: left; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;font-size:14px;line-height:18px;margin:0 5px;"> @Html.DisplayFor(modelItem => item.Title)</h6></a>
@@ -88,12 +98,12 @@
                                     </tr>
 
                                 }
-                                    </table>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
 
         </div>
     </div>

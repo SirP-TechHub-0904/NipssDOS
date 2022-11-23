@@ -23,23 +23,7 @@ namespace NipssDOS.Areas.Root.Pages.Main
 
         public async Task OnGetAsync()
         {
-            Alumni = await _context.Alumnis
-                //.Include(x => x.Participants)
-                //.ThenInclude(x => x.Profile)
-                //.ThenInclude(x => x.User)
-
-                //.Include(x => x.Executives)
-
-                //.Include(x => x.ManagingStaffs)
-
-                // .Include(x => x.SecProject)
-                // .Include(x => x.StudyGroup)
-                // //.Include(x => x.CommitteeCategory)
-
-
-                // .Include(x => x.SecPapers)
-                // .Include(x => x.Tours)
-
+            Alumni = await _context.Alumnis                
                  .OrderByDescending(x=>x.SortOrder)
                 .ToListAsync();
         }

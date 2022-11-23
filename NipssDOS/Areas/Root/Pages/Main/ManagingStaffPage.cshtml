@@ -7,7 +7,7 @@
 <div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
 
     <h3>MANAGEMENT STAFF FOR @Model.Alumni.Title (@Model.Alumni.ManagingStaffs.Count())</h3>
-    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
     {
         <h6>
             <a asp-page="/ManagementStaff/UpdateManagement" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Update Management for SEC</a>

@@ -226,6 +226,12 @@
     </div>
 </div>
 <!-- Breadcrumbs End -->
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <!-- Team Section Start -->
 <div id="rs-team" class="rs-team style2 pt-100 pb-100 md-pt-70 md-pb-70">
 
@@ -252,9 +258,10 @@
                         <div class="card-body" style="padding: 5px; height: 70px; background-color: #52ad79; color: white;">
 
                             <h6 class="card-title text-center uppercase" style="font-size:15px;font-weight:900;color:#fff;">@item.Profile.Title @item.Profile.FullName</h6>
-                            
+
                             <p class="card-text text-center bold" style="font-size:10px;">
-                                @item.Position                           </p>
+                                @item.Position
+                            </p>
 
                         </div>
                     </div>

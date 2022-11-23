@@ -268,6 +268,9 @@ namespace NipssDOS.Data.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("AddToLibrary")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
@@ -279,6 +282,9 @@ namespace NipssDOS.Data.Migrations
 
                     b.Property<string>("GeneralTopicContinuation")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Loading")
+                        .HasColumnType("bit");
 
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
@@ -662,6 +668,9 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("AlumniId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -705,6 +714,8 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AlumniId");
 
                     b.ToTable("Events");
                 });
@@ -1533,6 +1544,9 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("AlumniId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("BgColor")
                         .HasColumnType("nvarchar(max)");
 
@@ -1555,6 +1569,8 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AlumniId");
 
                     b.ToTable("ParlyReportCategories");
                 });
@@ -1642,6 +1658,9 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("AlumniId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("BgColor")
                         .HasColumnType("nvarchar(max)");
 
@@ -1662,6 +1681,8 @@ namespace NipssDOS.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlumniId");
+
                     b.HasIndex("ParlyReportCategoryId");
 
                     b.ToTable("ParlyReportSubCategories");
@@ -1673,6 +1694,9 @@ namespace NipssDOS.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("AlumniId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("BgColor")
                         .HasColumnType("nvarchar(max)");
@@ -1694,6 +1718,8 @@ namespace NipssDOS.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlumniId");
+
                     b.HasIndex("ParlySubTwoCategoryId");
 
                     b.ToTable("ParlySubThreeCategories");
@@ -1705,6 +1731,9 @@ namespace NipssDOS.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("AlumniId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("BgColor")
                         .HasColumnType("nvarchar(max)");
@@ -1725,6 +1754,8 @@ namespace NipssDOS.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AlumniId");
 
                     b.HasIndex("ParlyReportSubCategoryId");
 
@@ -3147,7 +3178,7 @@ namespace NipssDOS.Data.Migrations
                         .HasForeignKey("ProfileId");
 
                     b.HasOne("NipssDOS.Data.Model.StudyGroup", "StudyGroup")
-                        .WithMany()
+                        .WithMany("DirectingStaffs")
                         .HasForeignKey("StudyGroupId");
                 });
 
@@ -3171,6 +3202,13 @@ namespace NipssDOS.Data.Migrations
                 });
 
             modelBuilder.Entity("NipssDOS.Data.Model.DocumentCategory", b =>
+                {
+                    b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
+                        .WithMany()
+                        .HasForeignKey("AlumniId");
+                });
+
+            modelBuilder.Entity("NipssDOS.Data.Model.Event", b =>
                 {
                     b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
                         .WithMany()
@@ -3255,6 +3293,13 @@ namespace NipssDOS.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("NipssDOS.Data.Model.ParlyReportCategory", b =>
+                {
+                    b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
+                        .WithMany()
+                        .HasForeignKey("AlumniId");
+                });
+
             modelBuilder.Entity("NipssDOS.Data.Model.ParlyReportDocument", b =>
                 {
                     b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
@@ -3292,6 +3337,10 @@ namespace NipssDOS.Data.Migrations
 
             modelBuilder.Entity("NipssDOS.Data.Model.ParlyReportSubCategory", b =>
                 {
+                    b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
+                        .WithMany()
+                        .HasForeignKey("AlumniId");
+
                     b.HasOne("NipssDOS.Data.Model.ParlyReportCategory", "ParlyReportCategory")
                         .WithMany("ParlyReportSubCategories")
                         .HasForeignKey("ParlyReportCategoryId");
@@ -3299,6 +3348,10 @@ namespace NipssDOS.Data.Migrations
 
             modelBuilder.Entity("NipssDOS.Data.Model.ParlySubThreeCategory", b =>
                 {
+                    b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
+                        .WithMany()
+                        .HasForeignKey("AlumniId");
+
                     b.HasOne("NipssDOS.Data.Model.ParlySubTwoCategory", "ParlySubTwoCategory")
                         .WithMany("ParlySubThreeCategories")
                         .HasForeignKey("ParlySubTwoCategoryId");
@@ -3306,6 +3359,10 @@ namespace NipssDOS.Data.Migrations
 
             modelBuilder.Entity("NipssDOS.Data.Model.ParlySubTwoCategory", b =>
                 {
+                    b.HasOne("NipssDOS.Data.Model.Alumni", "Alumni")
+                        .WithMany()
+                        .HasForeignKey("AlumniId");
+
                     b.HasOne("NipssDOS.Data.Model.ParlyReportSubCategory", "ParlyReportSubCategory")
                         .WithMany("ParlySubTwoCategories")
                         .HasForeignKey("ParlyReportSubCategoryId");

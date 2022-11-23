@@ -18,7 +18,8 @@ namespace NipssDOS.Data.Model
         public int SortOrder { get; set; }
         public string BgColor { get; set; }
 
-
+        public long? AlumniId { get; set; }
+        public Alumni Alumni { get; set; }
         public long? ParlyReportCategoryId { get; set; }
         public ParlyReportCategory ParlyReportCategory {get;set;}
         public ICollection<ParlyReportDocument> ParlyReportDocuments { get; set; }

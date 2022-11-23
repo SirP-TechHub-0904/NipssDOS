@@ -19,6 +19,12 @@
     </div>
 </div>
 
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container">
         <div class="row">
@@ -49,7 +55,7 @@
 
                                             <div class="card-body" style="padding: 5px;">
 
-                                               
+
                                                 <div>
                                                     @Html.Raw(i.ShortDescription)
                                                 </div>
@@ -69,7 +75,7 @@
                                         <h4 style="font-size:20px;font-weight:900;color:#000000;margin:0;">VARIOUS TOURS</h4>
                                     </th>
                                 </tr>
-                              
+
                                 @foreach (var item in Model.TourSubCategories)
                                 {
                                     <tr>

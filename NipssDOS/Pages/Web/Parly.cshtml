@@ -18,6 +18,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <style>
     .card {
         position: relative;
@@ -25,11 +31,12 @@
         flex-direction: column;
         min-width: 0;
         word-wrap: break-word;
-         background-color: none; 
+        background-color: none;
         background-clip: border-box;
-         border: none; 
+        border: none;
         border-radius: 0.25rem;
     }
+
     .card-folders .card-body > .breadcrumb {
         margin-left: -1.25em;
         margin-right: -1.25em;
@@ -93,45 +100,45 @@
     <div class="container">
         <div class="row">
 
-          
-                @*<div class="col-md-6" style="margin:10px 0">
-                <a asp-page="/Web/ParlyDocList" asp-route-id="@item.Id">
-                    <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: 120px;">
-                        <h3 style="text-align: center; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Title) </h3>
-                    </div>
-                </a>
-                <a href="whatsapp://send?text=https://NipssDOS.com/Web/ParlyDocList?id=@item.Id" data-action="share/whatsapp/share"
-                   target="_blank" class="btn btn-success btn-xs" style="color:white;font-weight:700;width:100%;margin-top:5px;"> Share to WhatsApp </a>
-            </div>*@
-                <br>
-                <div class="container">
 
-                    <div class="card card-folders">
-                     
-                        <!-- Folders Container -->
-                        <div class="card-body" id="foldersGroup">
-                          
-                            <div id="main-folders" class="d-flex align-items-stretch flex-wrap">
-                                @foreach (var item in Model.ParlyReportCategory)
-                                {
-                                    <a asp-page="/Web/ParlyDocList" asp-route-f1="@item.Id">
-                                        <div class="d-inline-flex">
-                                            <button class="folder-container">
-                                                <div class="folder-icon">
-                                                    <i class="fa fa-folder folder-icon-color"></i>
-                                                </div>
-                                                <div class="folder-name" style="font-size:11px;">@Html.DisplayFor(modelItem => item.Title) </div>
-                                            </button>
-                                        </div>
-                                        </a>
-                                        }
-                                </div>
+            @*<div class="col-md-6" style="margin:10px 0">
+                    <a asp-page="/Web/ParlyDocList" asp-route-id="@item.Id">
+                        <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: 120px;">
+                            <h3 style="text-align: center; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Title) </h3>
                         </div>
-                       
+                    </a>
+                    <a href="whatsapp://send?text=https://NipssDOS.com/Web/ParlyDocList?id=@item.Id" data-action="share/whatsapp/share"
+                       target="_blank" class="btn btn-success btn-xs" style="color:white;font-weight:700;width:100%;margin-top:5px;"> Share to WhatsApp </a>
+                </div>*@
+            <br>
+            <div class="container">
+
+                <div class="card card-folders">
+
+                    <!-- Folders Container -->
+                    <div class="card-body" id="foldersGroup">
+
+                        <div id="main-folders" class="d-flex align-items-stretch flex-wrap">
+                            @foreach (var item in Model.ParlyReportCategory)
+                            {
+                                <a asp-page="/Web/ParlyDocList" asp-route-f1="@item.Id">
+                                    <div class="d-inline-flex">
+                                        <button class="folder-container">
+                                            <div class="folder-icon">
+                                                <i class="fa fa-folder folder-icon-color"></i>
+                                            </div>
+                                            <div class="folder-name" style="font-size:11px;">@Html.DisplayFor(modelItem => item.Title) </div>
+                                        </button>
+                                    </div>
+                                </a>
+                            }
+                        </div>
                     </div>
 
                 </div>
-                <br>
+
+            </div>
+            <br>
 
         </div>
     </div>

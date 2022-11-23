@@ -39,6 +39,13 @@ namespace NipssDOS.Areas.Root.Pages.ParlyCategory.SubTwo
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            var alum = await _context.Alumnis.FirstOrDefaultAsync(x => x.Active == true);
+            if (alum == null)
+            {
+                TempData["aaerror"] = "unable to update";
+                return Page();
+            }
+            ParlySubTwoCategory.AlumniId = alum.Id;
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -14,6 +14,8 @@ namespace NipssDOS.Data.Model
         public string GeneralTopic { get; set; }
         public string GeneralTopicContinuation { get; set; }
         public bool Active { get; set; }
+        public bool Loading { get; set; }
+        public bool AddToLibrary { get; set; }
         public string Color { get; set; }
         public int SortOrder { get; set; }
 

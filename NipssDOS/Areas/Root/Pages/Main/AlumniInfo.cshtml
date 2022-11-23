@@ -40,14 +40,7 @@
                         @Html.DisplayFor(model => model.Alumni.Year)
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        General Topic
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Alumni.GeneralTopic)
-                    </td>
-                </tr>
+
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Alumni.Active)
@@ -56,23 +49,54 @@
                         @Html.DisplayFor(model => model.Alumni.Active)
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        Number
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Alumni.SortOrder)
-                    </td>
-                </tr>
+
             </thead>
         </table>
+        <div class="table-responsive">
+            <h4 style="padding:5px;">THEME</h4>
+
+            <table id="" class="table table-bordered table-striped">
+
+                <thead>
+                    <tr>
+                        <th>
+                            Theme
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Alumni.GeneralTopic) <sub>@Html.DisplayFor(model => model.Alumni.GeneralTopicContinuation)</sub>
+                        </td>
+                    </tr>
+
+
+                </thead>
+            </table>
+            <h4 style="padding:5px;">SUB THEME</h4>
+
+            <table id="" class="table table-bordered table-striped">
+
+                <thead>
+                    @foreach (var themes in Model.Alumni.SubGeneralTopics.OrderBy(x => x.SortOrder))
+                    {
+                        <tr>
+                            <th>
+                                @themes.SortOrder
+                            </th>
+                            <td>
+                                @themes.SunTheme
+                            </td>
+                          
+                        </tr>
+                    }
+
+                </thead>
+            </table>
+        </div>
     </div>
 
 </div>
 <div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;padding:10px;">
-
-    <a asp-page="./Edit" asp-route-id="@Model.Alumni.Id" class="btn btn-success" style="margin-right:6px;">Update SEC</a>
-    <a asp-page="./EditTheme" asp-route-id="@Model.Alumni.Id" class="btn btn-warning" style="margin-right:6px;">Update Theme</a>
+    
+    <a asp-page="./DashboardPage" asp-route-id="@Model.Alumni.Id" class="btn btn-warning" style="margin-right:6px;">Dasboard</a>
     <a asp-page="./LegacyProjectPage" asp-route-id="@Model.Alumni.Id" class="btn btn-primary" style="margin:6px;">Legacy Project</a>
     <a asp-page="./ExecutiveManage" asp-route-id="@Model.Alumni.Id" class="btn btn-danger" style="margin:6px;">Executives</a>
     <a asp-page="./StudyGroupManage" asp-route-id="@Model.Alumni.Id" class="btn btn-warning" style="margin:6px;">Study Group</a>

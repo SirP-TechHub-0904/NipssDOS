@@ -23,6 +23,7 @@ namespace NipssDOS.Areas.Root.Pages.Main
         }
 
         public Alumni Alumni { get; set; }
+        public Alumni AlumniNext { get; set; }
         public IList<Event> EventOnly { get; set; }
         public IList<ParlyReportCategory> ParlyReportCategories { get; set; }
         public IList<ParlyReportCategory> ParlyFolder { get; set; }
@@ -53,43 +54,25 @@ namespace NipssDOS.Areas.Root.Pages.Main
           
 
             Alumni = await _context.Alumnis
-                //.Include(x => x.StudyGroup)
-                //.Include(x => x.Participants)
-
-                //.ThenInclude(x => x.Profile)
-
-                //.ThenInclude(x => x.User)
-
-
-                //.Include(x => x.Executives)
-                //.ThenInclude(x => x.Profile)
-
-                //.Include(x => x.ManagingStaffs)
-                //.ThenInclude(x => x.Profile)
-
-
-                // .Include(x => x.DirectingStaffs)
-                //.ThenInclude(x => x.Profile)
-                //.Include(x => x.StudyGroup)
-                //.ThenInclude(x=>x.SecParticipants)
-                //.Include(x => x.SecProject)
-                //.Include(x => x.SecPapers)
-                //.ThenInclude(x => x.DocumentCategory)
-
-                //.Include(x => x.CommitteeCategory)
-                //.ThenInclude(x => x.Committees)
-
+              
                 .Where(m => m.Active == true).FirstOrDefaultAsync();
 
             if (Alumni == null)
             {
                 return NotFound();
             }
-            ParlyReportCategories = await _context.ParlyReportCategories.Include(x=>x.ParlyReportSubCategories).Include(x=>x.ParlyReportDocuments).Where(x => x.Show == true && x.FolderType == FolderType.Main).ToListAsync();
-            ParlyFolder = await _context.ParlyReportCategories.Include(x => x.ParlyReportSubCategories).Include(x => x.ParlyReportDocuments).Where(x => x.Show == true && x.FolderType == FolderType.Parly).ToListAsync();
+
+
+            ParlyReportCategories = await _context.ParlyReportCategories.Include(x=>x.ParlyReportSubCategories).Include(x=>x.ParlyReportDocuments).Where(x => x.Show == true && x.FolderType == FolderType.Main && x.Alumni.Active == true).ToListAsync();
+            ParlyFolder = await _context.ParlyReportCategories.Include(x => x.ParlyReportSubCategories).Include(x => x.ParlyReportDocuments).Where(x => x.Show == true && x.FolderType == FolderType.Parly && x.Alumni.Active == true).ToListAsync();
             TotalParticipant = await _context.Participants.Where(x => x.IsTrue == true).CountAsync();
             Male = await _context.Participants.Where(x => x.IsTrue == true && x.Profile.Gender.ToUpper() == "MALE").CountAsync();
             Female = await _context.Participants.Where(x => x.IsTrue == true && x.Profile.Gender.ToUpper() == "FEMALE").CountAsync();
+
+
+            AlumniNext = await _context.Alumnis
+
+                .Where(m => m.Loading == true).FirstOrDefaultAsync();
             return Page();
         }
 

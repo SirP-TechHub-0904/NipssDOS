@@ -17,6 +17,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container-fluid">
         <div class="row">
@@ -46,40 +52,40 @@
 
                                         @foreach (var item in Model.Event)
                                         {
-                                        <tr>
-                                            <td><a><p style="font-weight:800;">@item.EventDate</p></a></td>
-                                            <td><a><p style="font-weight:800;">@item.EventTime</p></a></td>
+                                            <tr>
+                                                <td><a><p style="font-weight:800;">@item.EventDate</p></a></td>
+                                                <td><a><p style="font-weight:800;">@item.EventTime</p></a></td>
 
-                                            <td>
-                                                <h6 style="text-align: left; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;line-height:24px;margin:0 5px;">@Html.Raw(item.Content)</h6>
+                                                <td>
+                                                    <h6 style="text-align: left; color: #000000;text-shadow: 1px 1px 1px #ff6a00;text-transform:uppercase;line-height:24px;margin:0 5px;">@Html.Raw(item.Content)</h6>
 
-                                            </td>
-                                            <td><a><p style="font-weight:800;font-size:12px;">@item.Moderator</p></a></td>
-                                            <td><a><p style="font-weight: 800; font-size: 12px;">@item.Lecturer</p></a></td>
-                                            <td><a><p style="font-weight: 800; font-size: 12px;">@item.Module</p></a></td>
-                                            <td>
-                                                @if (item.Document != null)
+                                                </td>
+                                                <td><a><p style="font-weight:800;font-size:12px;">@item.Moderator</p></a></td>
+                                                <td><a><p style="font-weight: 800; font-size: 12px;">@item.Lecturer</p></a></td>
+                                                <td><a><p style="font-weight: 800; font-size: 12px;">@item.Module</p></a></td>
+                                                <td>
+                                                    @if (item.Document != null)
                                                     {
                                                         if (!String.IsNullOrEmpty(item.Document.FileName))
                                                         {
 
 
-                                                <span style="font-size:12px;">Available</span>
-                                                <a href="@item.Document.FileName" class="btn btn-danger btn-xs" style="color: white; padding: 0.175rem 0.75rem;font-size:10px;" download="@Html.Raw(item.Content)">download</a>
+                                                            <span style="font-size:12px;">Available</span>
+                                                            <a href="@item.Document.FileName" class="btn btn-danger btn-xs" style="color: white; padding: 0.175rem 0.75rem;font-size:10px;" download="@Html.Raw(item.Content)">download</a>
                                                         }
                                                         else
                                                         {
-                                                <span>-------</span>
+                                                            <span>-------</span>
                                                         }
                                                     }
                                                     else
                                                     {
-                                                <span>-------</span>
+                                                        <span>-------</span>
                                                     }
-                                            </td>
+                                                </td>
 
 
-                                        </tr>
+                                            </tr>
 
                                         }
                                     </tbody>

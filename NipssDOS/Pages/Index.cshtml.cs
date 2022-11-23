@@ -63,7 +63,21 @@ namespace NipssDOS.Pages
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
 
-
+       
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            Contact.Date = DateTime.UtcNow.AddHours(1).ToString();
+            _context.Contact.Add(Contact);
+            await _context.SaveChangesAsync();
+            TempData["contact"] = "Form Submitted Successfully";
+            return RedirectToPage("./LiveChat");
+        }
         public async Task<JsonResult> OnGetRunAccount(string devicex, string tokenid)
         {
             Alumni = await _context.Alumnis.Include(x => x.SubGeneralTopics).Include(x => x.SecProject)

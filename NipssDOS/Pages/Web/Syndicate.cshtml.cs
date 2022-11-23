@@ -27,8 +27,9 @@ namespace NipssDOS.Pages.Web
                 return NotFound();
             }
 
-            StudyGroup = await _context.StudyGroups.Include(x => x.StudyGroupMemebers).Where(x=>x.AlumniId == id).OrderBy(x => x.SortNumber).ToListAsync();
-           
+            //StudyGroup = await _context.StudyGroups.Include(x => x.StudyGroupMemebers).Where(x=>x.AlumniId == id).OrderBy(x => x.SortNumber).ToListAsync();
+            StudyGroup = await _context.StudyGroups.Include(x => x.Alumni).Include(x => x.SecParticipants).Where(m => m.AlumniId == id).OrderBy(x => x.SortNumber).ToListAsync();
+
             Alumni = await _context.Alumnis
                 .Include(x => x.SecProject)
                 .FirstOrDefaultAsync(m => m.Id == id);

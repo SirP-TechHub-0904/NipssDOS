@@ -62,7 +62,7 @@ namespace NipssDOS.Areas.Identity.Pages.Account
             }
             if(usp != "usepass")
             {
-                return RedirectToPage("./LoginWithEmail");
+                return RedirectToPage("./LoginWithEmail", new { returnUrl = returnUrl });
 
             }
 

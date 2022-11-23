@@ -225,6 +225,12 @@
     </div>
 </div>
 <!-- Breadcrumbs End -->
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <!-- Team Section Start -->
 <div id="rs-team" class="rs-team style2 pt-100 pb-100 md-pt-70 md-pb-70">
 
@@ -341,25 +347,25 @@
             <a href="#close" title="Close" class="close">X</a>
             <h5>@item.Title</h5>
             <div style="margin:0 auto;text-align:center;">
-              <img src="https://NipssDOS.com/@item.FilePath" style="margin:0 auto;text-align:center;" />
-            </div> 
+                <img src="https://NipssDOS.com/@item.FilePath" style="margin:0 auto;text-align:center;" />
+            </div>
         </div>
     </div>
 }
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
 
-        <script language="javascript" type="text/javascript">
-            $('.filter-btn').on('click', function () {
-                // $('#openModal').modal({ show: true });
-                //$('#openModal').modal('show');
-                // $('#myModal').modal('show');
-                console.log($(this).attr('data-url'));
-                // I recommend giving your form an ID or something instead of just matching on the form element.
-                //
-                $('#myModal').modal();
-            });
-        </script>
-    }
+    <script language="javascript" type="text/javascript">
+        $('.filter-btn').on('click', function () {
+            // $('#openModal').modal({ show: true });
+            //$('#openModal').modal('show');
+            // $('#myModal').modal('show');
+            console.log($(this).attr('data-url'));
+            // I recommend giving your form an ID or something instead of just matching on the form element.
+            //
+            $('#myModal').modal();
+        });
+    </script>
+}

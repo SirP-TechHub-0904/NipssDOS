@@ -17,6 +17,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container">
         <div class="row">
@@ -26,44 +32,44 @@
 
 
                         <div class="col-md-9">
-                            
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div style="margin: 4px; box-shadow: 2px 1.6px 3.6px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120) ">
-                                                            @*@if (!String.IsNullOrEmpty(Model.Document.CoverImage))
-                                                            {
 
-                                                                <div class="" style="height: 600px; background: url('@Model.Document.CoverImage'); background-repeat: no-repeat; background-size: cover;background-position: center; ">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div style="margin: 4px; box-shadow: 2px 1.6px 3.6px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120) ">
+                                        @*@if (!String.IsNullOrEmpty(Model.Document.CoverImage))
+                                            {
 
-                                                                </div>
-                                                            }*@
-                                                            <img src="@Model.Document.CoverImage" style="max-height:600px;margin:0 auto; text-align:center;" class="img-fluid" />
-                                                            <div class="card-body" style="padding: 5px;">
+                                                <div class="" style="height: 600px; background: url('@Model.Document.CoverImage'); background-repeat: no-repeat; background-size: cover;background-position: center; ">
 
-                                                                <h6 class="card-title text-center uppercase" style="font-weight:900;margin:0;">Resource Preson: @Model.Document.Profile.FullName</h6>
-                                                                <h6 class="card-title text-center uppercase" style="margin:0;">
-                                                                    @Model.Document.DocumentCategory.Title
-                                                                </h6>
-                                                                <div>
-                                                                    @Html.Raw(Model.Document.Description)
-                                                                </div>
-                                                                @if (User.Identity.IsAuthenticated)
-                                                                {
-
-                                                                    <a href="@Model.Document.FileName" class="btn btn-danger" style="color:#ffffff;width:100%;font-weight:900;" download>DOWNLOAD</a>
-
-                                                                }
-                                                                else
-                                                                {
-                                                                    <a class="btn btn-danger" style="color:#ffffff;width:100%;font-weight:900;" asp-page="/Account/Login" asp-area="Identity">DOWNLOAD</a>
-
-                                                                }
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                     
+                                            }*@
+                                        <img src="@Model.Document.CoverImage" style="max-height:600px;margin:0 auto; text-align:center;" class="img-fluid" />
+                                        <div class="card-body" style="padding: 5px;">
+
+                                            <h6 class="card-title text-center uppercase" style="font-weight:900;margin:0;">Resource Preson: @Model.Document.Profile.FullName</h6>
+                                            <h6 class="card-title text-center uppercase" style="margin:0;">
+                                                @Model.Document.DocumentCategory.Title
+                                            </h6>
+                                            <div>
+                                                @Html.Raw(Model.Document.Description)
+                                            </div>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+
+                                                <a href="@Model.Document.FileName" class="btn btn-danger" style="color:#ffffff;width:100%;font-weight:900;" download>DOWNLOAD</a>
+
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-danger" style="color:#ffffff;width:100%;font-weight:900;" asp-page="/Account/Login" asp-area="Identity">DOWNLOAD</a>
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-md-3">
 

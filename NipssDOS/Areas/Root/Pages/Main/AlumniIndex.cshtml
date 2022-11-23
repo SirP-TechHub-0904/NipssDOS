@@ -1,0 +1,111 @@
+﻿@page
+@model NipssDOS.Areas.Root.Pages.Main.AlumniIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card-body">
+
+
+    <h2>SECs </h2>
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <div class="table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].SortOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].Title)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumni[0].Year)
+                    </th>
+                    <th>
+                        Theme
+                    </th>
+
+                    <th>Active</th>
+                    <th>Add To Library</th>
+                    <th>Loading</th>
+                    <th>BG</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Alumni)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SortOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GeneralTopic)
+                        @Html.DisplayFor(modelItem => item.GeneralTopicContinuation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                        @if (item.Active == true)
+                        {
+                            <span>Active</span>
+                        }
+                        else
+                        {
+                            <span>----</span>
+
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddToLibrary)
+                        @if (item.AddToLibrary == true)
+                        {
+                            <span>True</span>
+                        }
+                        else
+                        {
+                            <span>----</span>
+
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Loading)
+                        @if (item.Loading == true)
+                        {
+                            <span>Loading</span>
+                        }
+                        else
+                        {
+                            <span>----</span>
+
+                        }
+
+                    </td>
+                    <td class="@item.Color">
+                        Color
+                    </td>
+
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                        <a asp-page="./EditTheme" asp-route-id="@item.Id" class="btn btn-warning">Update Theme</a>
+
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>

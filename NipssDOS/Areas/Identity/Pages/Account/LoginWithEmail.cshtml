@@ -11,7 +11,7 @@
 
 
             <h2 class="nm-tc nm-mb-1">Sign In</h2>
-            <form method="post">
+            <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
                 <div asp-validation-summary="All" class="text-danger" style="font-weight:800;;text-align:center;"></div>
                 @TempData["alert"]
                 <div class="form-group">
@@ -21,7 +21,7 @@
 
               
                 <div class="d-flex nm-aic nm-jcb nm-mb-1 nm-mt-1">
-                    <a class="nm-ft-b" asp-area="Identity" asp-page="/Account/Login" asp-route-usp="usepass">Login With Password</a>
+                    <a class="nm-ft-b" asp-area="Identity" asp-page="/Account/Login" asp-route-usp="usepass" asp-route-returnUrl="@Model.ReturnUrl">Login With Password</a>
                     <a class="nm-ft-b" asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot password?</a>
 
                 </div>

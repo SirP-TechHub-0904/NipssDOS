@@ -45,20 +45,32 @@ namespace NipssDOS.Areas.Root.Pages.Main
         public int INDIVIDUALESSAYS { get; set; }
         public int OTHERRESOURCEMATERIALS { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
-          
 
-            Alumni = await _context.Alumnis
-                
-                .Where(m => m.Active == true).FirstOrDefaultAsync();
-
-            if (Alumni == null)
+            if (id != null)
             {
-                return NotFound();
-            }
+                Alumni = await _context.Alumnis
+               .Include(x => x.SubGeneralTopics)
+               .Where(m => m.Id == id).FirstOrDefaultAsync();
 
-           
+                if (Alumni == null)
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                Alumni = await _context.Alumnis
+                    .Include(x => x.SubGeneralTopics)
+                    .Where(m => m.Active == true).FirstOrDefaultAsync();
+
+                if (Alumni == null)
+                {
+                    return NotFound();
+                }
+
+            }
             return Page();
         }
 

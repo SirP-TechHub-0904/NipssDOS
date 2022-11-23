@@ -14,7 +14,7 @@
         <a asp-page="/Main/AlumniInfo" asp-area="Root" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
 
     </h3>
-    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
     {
         <h6>
             <a asp-page="/ParticipantManager/Create" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Add New Participant to SEC</a>

@@ -23,6 +23,9 @@ namespace NipssDOS.Data.Model
         public bool IsLecture { get; set; }
         public string Module { get; set; }
 
+        public long? AlumniId { get; set; }
+        public Alumni Alumni { get; set; }
+
         public virtual Document Document { get; set; }
     }
 }

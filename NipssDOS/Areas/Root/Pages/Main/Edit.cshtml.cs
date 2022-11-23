@@ -61,7 +61,7 @@ namespace NipssDOS.Areas.Root.Pages.Main
             }
 
 
-            return RedirectToPage("./AlumniInfo", new { id = Alumni.Id });
+            return RedirectToPage("./AlumniIndex");
         }
 
         private bool AlumniExists(long id)

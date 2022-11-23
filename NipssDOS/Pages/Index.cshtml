@@ -296,7 +296,7 @@
         <div class="row">
             <div class="col-lg-6 pr-33 md-pr-15 md-mb-50">
                 <div class="images-part" style="border: 2px solid #ffffff; box-shadow: 0px 1.6px 3.6px rgb(0 0 0 / 13%), 0px 0px 2.9px rgb(0 0 0 / 11%);">
-                    <img src="~/img/abt-1.jpeg" alt="Images">
+                    <img src="@Model.Alumni.WebsiteFirstImage" alt="Images">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -396,7 +396,7 @@
         <div class="row">
             <div class="col-lg-6 pr-33 md-pr-15 md-mb-50">
                 <div class="images-part" style="border: 2px solid #ffffff; box-shadow: 0px 1.6px 3.6px rgb(0 0 0 / 13%), 0px 0px 2.9px rgb(0 0 0 / 11%);">
-                    <img src="~/img/portfolio.jpg" alt="Images">
+                    <img src="@Model.Alumni.WebsiteSecondImage" alt="Images">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -678,43 +678,12 @@
         </div>
         @await Component.InvokeAsync("SecExco")
 
-        @*<div class="row">
-            @foreach (var x in Model.Executive)
-                {
-            <div class="col-md-4">
-                <div style="margin: 4px; box-shadow: 2px 1.6px 3.6px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120) ">
-                    @if (!String.IsNullOrEmpty(x.Profile.AboutProfile))
-                            {
-
-                    <div class="" style="height: 500px; background: url('@x.Profile.AboutProfile'); background-repeat: no-repeat; background-size: cover;background-position: center; ">
-
-                    </div>
-                            }
-                            else
-                            {
-
-                    <div class="" style="height: 500px; background: url('../img/adamm.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; ">
-
-                    </div>
-                            }
-                    <div class="card-body" style="padding: 5px; height: 70px; background-color: #52ad79; color: white;">
-
-                        <h6 class="card-title text-center uppercase" style="font-size:15px;font-weight:900;color:#fff;">@x.Profile.Title @x.Profile.FullName</h6>
-                        <h6 class="card-title text-center uppercase" style="font-size: 12px; color: #fff;">
-                            @x.Position
-                        </h6>
-
-                    </div>
-                </div>
-            </div>
-
-                }
-        </div>*@
+    
         <div class="row y-middle">
 
             <div class="col-lg-12">
                 <div class="btn-part text-right md-left">
-                    <a class="readon consultant discover orange-more" asp-page="/Profiles">View More</a>
+                    <a class="readon consultant discover orange-more" asp-page="/Web/Executivex" asp-route-id="@Model.Alumni.Id">View More</a>
                 </div>
             </div>
         </div>

@@ -21,12 +21,18 @@ namespace NipssDOS.Pages
             _context = context;
         }
 
-        public IList<Profile> Profile { get;set; }
+        public IList<SecParticipant> Profile { get;set; }
 
         public async Task OnGetAsync()
         {
-            Profile = await _context.Profiles
-                .Include(p => p.User).Where(x=>x.DontShow==false).Where(x=>x.User.Email != "jinmcever@gmail.com").ToListAsync();
+
+            Profile = await _context.Participants
+               .Include(s => s.Alumni)
+               .Include(s => s.Profile)
+               .ThenInclude(s => s.User)
+               .Include(s => s.StudyGroup).Where(x => x.Alumni.Active == true && x.IsTrue == true).ToListAsync();
+
+          
         }
     }
 }

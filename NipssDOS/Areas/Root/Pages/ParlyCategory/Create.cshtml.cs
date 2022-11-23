@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NipssDOS.Data;
 using NipssDOS.Data.Model;
 
@@ -31,6 +32,14 @@ namespace NipssDOS.Areas.Root.Pages.ParlyCategory
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+
+            var alum = await _context.Alumnis.FirstOrDefaultAsync(x => x.Active == true);
+            if(alum == null)
+            {
+                TempData["aaerror"] = "unable to update";
+                return Page();
+            }
+            ParlyReportCategory.AlumniId = alum.Id;
             if (!ModelState.IsValid)
             {
                 return Page();

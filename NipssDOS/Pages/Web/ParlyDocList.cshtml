@@ -42,6 +42,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <style>
     .card {
         position: relative;
@@ -150,7 +156,7 @@
 
                         </div>
                         <div class="col-md-9">
-                            
+
 
 
                             @if (Model.SubCategoryCheck == true)
@@ -268,17 +274,17 @@
                                             <div id="main-folders" class="d-flex align-items-stretch flex-wrap">
                                                 @foreach (var item in Model.ParlyReportDocuments)
                                                 {
-                                                <a href="@item.Document" download="@item.Title">
-                                                    <div class="d-inline-flex">
-                                                        <button class="folder-container">
-                                                            <div class="folder-icon">
-                                                                <i class="fa fa-file folder-icon-color-doc"></i>
-                                                            </div>
-                                                            <div class="folder-name" style="font-size: 11px; color: #4160c6;">@Html.DisplayFor(modelItem => item.Title) </div>
-                                                        </button>
-                                                    </div>
+                                                    <a href="@item.Document" download="@item.Title">
+                                                        <div class="d-inline-flex">
+                                                            <button class="folder-container">
+                                                                <div class="folder-icon">
+                                                                    <i class="fa fa-file folder-icon-color-doc"></i>
+                                                                </div>
+                                                                <div class="folder-name" style="font-size: 11px; color: #4160c6;">@Html.DisplayFor(modelItem => item.Title) </div>
+                                                            </button>
+                                                        </div>
                                                     </a>
-                                                    }
+                                                }
                                             </div>
                                         </div>
 

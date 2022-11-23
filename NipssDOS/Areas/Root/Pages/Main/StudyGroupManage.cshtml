@@ -12,7 +12,7 @@
         <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
 
     </h3>
-    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
     {
         <h6>
             <a asp-page="/StudyGroupPage/Create" asp-area="Admin" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Add New Group</a>
@@ -51,7 +51,7 @@
                         @sn
                     </td>
                     <td>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
                         {
 
                             <a asp-page="/StudyGroupPage/Edit" asp-area="Admin" asp-route-id="@item.Id">

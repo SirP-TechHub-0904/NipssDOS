@@ -53,6 +53,7 @@ namespace NipssDOS.Areas.Root.Pages.Main
                 _context.secProjects.Add(spp);
                 await _context.SaveChangesAsync();
                 TempData["aasuccess"] = "Updated successfully";
+                SecProject = await _context.secProjects.Include(x => x.Alumni).FirstOrDefaultAsync(m => m.AlumniId == id);
 
             }
             return Page();

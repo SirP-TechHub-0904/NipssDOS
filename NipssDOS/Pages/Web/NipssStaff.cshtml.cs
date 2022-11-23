@@ -19,12 +19,13 @@ namespace NipssDOS.Pages.Web
             _context = context;
         }
 
-        public IList<NipssStaff> NipssStaff { get;set; }
+        public IList<ManagingStaff> ManagingStaff { get;set; }
 
         public async Task OnGetAsync()
         {
-            NipssStaff = await _context.NipssStaff
-                .Include(n => n.Profile).ToListAsync();
+           
+            ManagingStaff = await _context.ManagingStaffs.Include(x => x.Alumni).Include(x => x.Profile).Where(m => m.Alumni.Active == true).OrderBy(x=>x.SortOrder).ToListAsync();
+
         }
     }
 }

@@ -17,6 +17,12 @@
     </div>
 </div>
 <!-- Breadcrumbs End -->
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
 <!-- Team Section Start -->
 <div class="rs-team style1 team-style1 pt-100 pb-100 md-pt-70 md-pb-70">
     <div class="container">
@@ -33,7 +39,7 @@
                         <div class="team-content">
                             <h3 class="team-name"><a asp-page="/StudyParticipants" asp-route-id="@item.Id" asp-route-xgroup="@item.Title">@item.Title</a></h3>
                             <span class="team-title">[@item.AKA]</span><br />
-                            <span class="team-title">@item.StudyGroupMemebers.Count() Participants</span>
+                            <span class="team-title">@item.SecParticipants.Where(x => x.IsTrue == true).Count() Participants</span>
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,13 @@
     </div>
 </div>
 <!-- Breadcrumbs End -->
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
 <!-- Team Section Start -->
 <div class="rs-team style1 team-style1 pt-100 pb-100 md-pt-70 md-pb-70">
     <div class="container">
@@ -25,10 +32,10 @@
             {
                 <div class="col-lg-4 col-md-6 mb-30">
                     <div class="team-wrap">
-                        
+
                         <div class="team-content">
                             <h3 class="team-name"><a asp-page="/Web/" asp-route-id="@item.Id" asp-route-xgroup="@item.Title">@item.Title</a></h3>
-                           
+
                         </div>
                     </div>
                 </div>

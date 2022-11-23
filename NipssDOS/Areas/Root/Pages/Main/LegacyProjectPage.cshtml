@@ -32,7 +32,7 @@
                         Project
                     </th>
                     <td>
-                        @Html.DisplayFor(model => model.SecProject.Title) 
+                        @Html.DisplayFor(model => model.SecProject.Title)
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +41,7 @@
                     </th>
                     <td>
                         <sub>@Html.DisplayFor(model => model.SecProject.SubTitle)</sub>
-                     
+
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +49,7 @@
                         Description
                     </th>
                     <td>
-                       
+
                         @Html.DisplayFor(model => model.SecProject.Description)
                     </td>
                 </tr>
@@ -96,65 +96,66 @@
     </div>
 
 </div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
+{
+    <div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
 
-<div class="card-body" style="box-shadow: 2px 2px 2px 2px #e0e0e0;">
+        <div class="col-md-4">
+            <h4>Update Legacy Project</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SecProject.Id" />
+                <input type="hidden" asp-for="SecProject.AlumniId" />
+                <div class="form-group">
+                    <label asp-for="SecProject.Title" class="control-label">Title</label>
+                    <textarea asp-for="SecProject.Title" class="form-control"></textarea>
+                    <span asp-validation-for="SecProject.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecProject.SubTitle" class="control-label">Sub Title</label>
+                    <textarea asp-for="SecProject.SubTitle" class="form-control"></textarea>
+                    <span asp-validation-for="SecProject.SubTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecProject.Description" class="control-label"></label>
+                    <textarea asp-for="SecProject.Description" class="form-control"></textarea>
+                    <span asp-validation-for="SecProject.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecProject.FrontViewImage" class="control-label">Front View</label>
+                    <input class="form-control" type="file" name="FrontView" id="gallery-photo-add" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecProject.SideViewImage" class="control-label">Side View</label>
+                    <input class="form-control" type="file" name="SideView" id="gallery-photo-add" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecProject.TopViewImage" class="control-label">Top View</label>
+                    <input class="form-control" type="file" name="TopView" id="gallery-photo-add" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-warning" />
+                </div>
+            </form>
+        </div>
 
-    <div class="col-md-4">
-        <h4>Update Legacy Project</h4>
-        <form method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SecProject.Id" />
-            <input type="hidden" asp-for="SecProject.AlumniId" />
-            <div class="form-group">
-                <label asp-for="SecProject.Title" class="control-label">Title</label>
-                <textarea asp-for="SecProject.Title" class="form-control"></textarea>
-                <span asp-validation-for="SecProject.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecProject.SubTitle" class="control-label">Sub Title</label>
-                <textarea asp-for="SecProject.SubTitle" class="form-control"></textarea>
-                <span asp-validation-for="SecProject.SubTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecProject.Description" class="control-label"></label>
-                <textarea asp-for="SecProject.Description" class="form-control"></textarea>
-                <span asp-validation-for="SecProject.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecProject.FrontViewImage" class="control-label">Front View</label>
-                <input class="form-control" type="file" name="FrontView" id="gallery-photo-add" />
-            </div>
-            <div class="form-group">
-                <label asp-for="SecProject.SideViewImage" class="control-label">Side View</label>
-                <input class="form-control" type="file" name="SideView" id="gallery-photo-add" />
-            </div>
-            <div class="form-group">
-                <label asp-for="SecProject.TopViewImage" class="control-label">Top View</label>
-                <input class="form-control" type="file" name="TopView" id="gallery-photo-add" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-warning" />
-            </div>
-        </form>
     </div>
 
-</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

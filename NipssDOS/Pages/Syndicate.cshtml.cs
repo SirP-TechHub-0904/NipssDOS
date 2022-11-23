@@ -23,7 +23,7 @@ namespace NipssDOS.Pages
 
         public async Task OnGetAsync()
         {
-            StudyGroup = await _context.StudyGroups.Include(x=>x.StudyGroupMemebers).OrderBy(x=>x.SortNumber).ToListAsync();
+            StudyGroup = await _context.StudyGroups.Include(x => x.Alumni).Include(x => x.SecParticipants).Where(m => m.Alumni.Active == true).OrderBy(x => x.SortNumber).ToListAsync();
         }
     }
 }

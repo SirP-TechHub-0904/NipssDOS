@@ -14,13 +14,20 @@
         <a asp-page="./AlumniInfo" asp-route-id="@Model.Alumni.Id" class="btn btn-danger pull-right">Back to Details</a>
 
     </h3>
-    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
     {
         <h6>
             <a asp-page="/ExecutivePage/UpdateExecutive" asp-route-id="@Model.Alumni.Id" class="btn btn-primary">Update Executive for SEC</a>
         </h6>
     }
     <div class="table-responsive">
+        @if (Model.Alumni.Executives == null)
+        {
+            <h4>NO EXECUTIVE</h4>
+        }
+        else
+        {
+
 
         <table id="example1" class="table table-bordered table-striped">
 
@@ -35,7 +42,7 @@
                     <th>
                         Name
                     </th>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin"))
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
                     {
                         <th></th>
                     }
@@ -44,29 +51,31 @@
             <tbody>
                 @foreach (var item in Model.Alumni.Executives)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SortOrder)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Position)
-                        </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SortOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
 
 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Profile.Title)
+                        @Html.DisplayFor(modelItem => item.Profile.FullName)
+                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Editor"))
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.Profile.Title)
-                            @Html.DisplayFor(modelItem => item.Profile.FullName)
+                            <a asp-page="/ExecutivePage/Delete" asp-route-id="@item.Id">Remove</a>
                         </td>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("mSuperAdmin") || User.IsInRole("Admin"))
-                        {
-                            <td>
-                                <a asp-page="/ExecutivePage/Delete" asp-route-id="@item.Id">Remove</a>
-                            </td>
-                        }
-                    </tr>
+                    }
+                </tr>
                 }
             </tbody>
         </table>
+
+        }
     </div>
 </div>
 

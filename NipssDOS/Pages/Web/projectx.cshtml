@@ -19,6 +19,13 @@
 </div>
 <!-- Breadcrumbs End -->
 
+<div class="container-fluid">
+    <a href="javascript: history.back()" class="pull-right btn btn-danger btn-xs" style="margin:30px;">
+        <span class="text-white"> <i class="fa fa-arrow-left"></i> Back</span>
+    </a>
+</div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
 <div class="rs-about style2 md-pt-70 md-pb-70" style="padding:30px 0 10px 0;">
     <div class="container">
         <div class="sec-title3 text-center md-mb-45" style="">
@@ -28,14 +35,56 @@
             </h2>
             @if (Model.SecProject != null)
             {
-        @*<img src="@Model.SecProject.Image" style="margin:0 auto;text-align:center;" />*@
+                <div class="row">
+
+
+                    <div class="col-md-12" style="margin:10px 0">
+                        <a href="#demo-theme">
+                            <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: ;">
+                                <h2 class="text-center" style="font-size:23px;font-weight:900;">
+                                    @Html.DisplayFor(model => model.SecProject.Title) <sub>@Html.DisplayFor(model => model.SecProject.SubTitle)</sub>
+
+                                </h2>                <br />
+                                <br />
+                                <h4 style="font-size:20px;font-weight:900;">
+                                    @Html.DisplayFor(model => model.SecProject.Description)
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-4" style="margin:10px 0">
+                        <a href="#demo-theme">
+                            <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: ;">
+                                <img src="@Model.SecProject.FrontViewImage" class="img-fluid" style="" />
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4" style="margin:10px 0">
+                        <a href="#demo-theme">
+                            <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: ;">
+                                <img src="@Model.SecProject.SideViewImage" class="img-fluid" style="" />
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4" style="margin:10px 0">
+                        <a href="#demo-theme">
+                            <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: #f3f0f0; height: ;">
+                                <img src="@Model.SecProject.TopViewImage" class="img-fluid" style="" />
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
             }
 
 
-                <span class="sub-title" style="font-size: 33px; font-weight: 800; border-radius: 4px;padding-top:20px;margin-top:40px;">COMMUTTE</span>
+            <span class="sub-title" style="font-size: 33px; font-weight: 800; border-radius: 4px;padding-top:20px;margin-top:40px;">COMMUTTE</span>
 
-            </div>
-        
+        </div>
+
     </div>
 
 </div>
@@ -45,40 +94,41 @@
     <div class="container">
         @if (Model.SecProject != null)
         {
-        <div class="row">
-            
-            @foreach (var item in Model.SecProjectExecutives)
-            {
-            <div class="col-md-4">
-                <div style="margin: 4px; box-shadow: 2px 1.6px 3.6px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120) ">
-                    @if (!String.IsNullOrEmpty(item.Profile.AboutProfile))
-                    {
+            <div class="row">
 
-                        <div class="" style="height: 500px; background: url('@item.Profile.AboutProfile'); background-repeat: no-repeat; background-size: cover;background-position: center; ">
+                @foreach (var item in Model.SecProjectExecutives)
+                {
+                    <div class="col-md-4">
+                        <div style="margin: 4px; box-shadow: 2px 1.6px 3.6px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120), 2px 0px 2.9px rgb(81 172 120) ">
+                            @if (!String.IsNullOrEmpty(item.Profile.AboutProfile))
+                            {
 
+                                <div class="" style="height: 500px; background: url('@item.Profile.AboutProfile'); background-repeat: no-repeat; background-size: cover;background-position: center; ">
+
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="" style="height: 500px; background: url('../img/adamm.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; ">
+
+                                </div>
+                            }
+                            <div class="card-body" style="padding: 5px; height: 80px; background-color: #52ad79; color: white;">
+
+                                <h6 class="card-title text-center uppercase" style="font-size:15px;font-weight:900;color:#fff;">@item.Profile.Title @item.Profile.FullName</h6>
+                                <h6 class="card-title text-center uppercase" style="font-size: 12px; color: #fff;">
+                                    @item.Position
+                                </h6>
+
+                            </div>
                         </div>
-                    }
-                    else
-                    {
-
-                        <div class="" style="height: 500px; background: url('../img/adamm.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; ">
-
-                        </div>
-                    }
-                    <div class="card-body" style="padding: 5px; height: 80px; background-color: #52ad79; color: white;">
-
-                        <h6 class="card-title text-center uppercase" style="font-size:15px;font-weight:900;color:#fff;">@item.Profile.Title @item.Profile.FullName</h6>
-                        <h6 class="card-title text-center uppercase" style="font-size: 12px; color: #fff;">
-                            @item.Position
-                        </h6>
-                       
                     </div>
-                </div>
-            </div>
-            }
+                }
 
-        </div>
-        }</div>
+            </div>
+        }
+    </div>
 </div>
 
 

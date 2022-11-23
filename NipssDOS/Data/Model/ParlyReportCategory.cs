@@ -15,7 +15,8 @@ namespace NipssDOS.Data.Model
         public int SortOrder { get; set; }
         public bool Show { get; set; }
         public FolderType FolderType { get; set; }
-
+        public long? AlumniId { get; set; }
+        public Alumni Alumni { get; set; }
         public ICollection<ParlyReportSubCategory> ParlyReportSubCategories { get; set; }
         public ICollection<ParlyReportDocument> ParlyReportDocuments { get; set; }
     }
