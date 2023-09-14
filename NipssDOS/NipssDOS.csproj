@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\files\**" />
+    <Compile Remove="wwwroot\GalleryLargeImage\**" />
+    <Content Remove="wwwroot\files\**" />
+    <Content Remove="wwwroot\GalleryLargeImage\**" />
+    <EmbeddedResource Remove="wwwroot\files\**" />
+    <EmbeddedResource Remove="wwwroot\GalleryLargeImage\**" />
+    <None Remove="wwwroot\files\**" />
+    <None Remove="wwwroot\GalleryLargeImage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\.bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -2694,8 +2705,6 @@
     <Folder Include="Areas\Account\Views\" />
     <Folder Include="Areas\Admin\Pages\QuestionnerPage\Apage\" />
     <Folder Include="wwwroot\assets\picture\" />
-    <Folder Include="wwwroot\GalleryLargeImage\" />
-    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
   <ItemGroup>
